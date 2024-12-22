@@ -1,0 +1,111 @@
+---
+title: Adaptive Interface Wrapper for Inclusive Mobile Banking UX
+date: '2024-12-20'
+tags: ['ux', 'case study', 'accessibility']
+draft: false
+summary: Adaptive Interface Wrapper improves mobile banking accessibility with age-specific helpers and customizable themes for an inclusive experience.
+---
+{/* (https://www.texthelp.com/resources/inclusive-digital-banking/) */}
+
+# Introduction
+
+
+In today’s world, where almost everyone relies on mobile apps for essential services like banking, **accessibility** is something that can’t be ignored. But let’s be real: most mobile banking apps don’t offer the same accessibility features as desktop tools. As a UX designer who’s passionate about HCI and usability, I realized this gap affects a lot of people, especially older adults or those with vision impairments.
+
+This case study dives into the development of an **Adaptive Interface Wrapper** for mobile banking apps. It allows users to customize their interface based on age and vision needs with features like age-specific helpers, customizable color themes, and clear confirmation prompts. The wrapper can be toggled on or off, offering flexibility without complicating the core app experience.
+
+---
+
+## **Research Process**
+
+### **Identifying the Problem**
+
+To back this project with solid data, I carried out a thorough research process involving both **quantitative surveys** and **qualitative interviews**.
+
+1. **Online Survey**: Collected responses from **200 mobile banking users** aged 40-70. The key findings were:
+    - **68%** reported struggling with small text or low-contrast interfaces.
+    - **54%** felt anxious about making mistakes while performing transactions.
+    - **72%** of respondents aged 60+ preferred clearer instructions and larger buttons.
+2. **User Interviews**: Conducted **15 in-depth interviews** with participants aged 45-70, including individuals with varying degrees of vision impairment (e.g., presbyopia, color blindness). Some insights:
+    - **Ramesh, 65**: "Sometimes I can’t read the text because it’s so small, and I worry I’ll click the wrong button."
+    - **Anita, 58**: "I wish there were clearer steps when I’m transferring money. I get confused with too many options."
+3. **Competitor Analysis**: Compared accessibility features of popular desktop tools. Here’s a summary:
+
+| **Tool** | **Features** | **Device** |
+| --- | --- | --- |
+| **ReachDeck Toolbar** | Text-to-speech, translation, and reading assistance. | Desktop |
+| **ADA Toolbar** | Accessibility checker, screen reader support, and text resizing. | Desktop |
+| **Recite Me** | Customizable toolbar with reading aids, color contrast adjustments, and translation capabilities. | Desktop |
+
+Noticed that while these tools are great for desktop apps, there’s a **lack of similar solutions for mobile apps**.
+
+---
+
+## **Feature Overview**
+
+### **1. Age-Based Helpers**
+
+We designed age-specific helpers to make mobile banking easier for older adults or anyone who needs extra guidance.
+
+### **Key Functionalities:**
+
+- **Age Input Field**: Users can input their age during onboarding or in the settings. This input is designed to be intuitive, with clear prompts and examples (e.g., "Enter your age to customize your experience"). The field automatically detects and validates appropriate age ranges to provide accurate assistance.
+- **Dynamic Helper Activation**: Once the user inputs their age, the system dynamically adjusts the interface. For older users, this includes activating detailed tooltips that describe each button's function, increasing icon sizes for better visibility, and simplifying menus. The interface can adapt in real-time, providing immediate feedback and enhancing usability based on user preferences.
+- **Toggle Control**: A clearly labeled toggle switch allows users to enable or disable the age-specific helpers at any point. This toggle is accessible from the settings menu and provides a brief explanation of what the helpers do. When users turn the feature on or off, they receive a visual and auditory confirmation to ensure they are aware of the change.
+
+### **Helper Features:**
+
+- **Simplified Instructions**: Step-by-step guides with clear, non-technical language. Financial terminology is simplified to ensure users of all literacy levels can understand the content.
+- **Tooltips**: Small pop-ups explaining buttons and features, ensuring users understand each step and option clearly.
+- **Larger Touch Targets**: Bigger buttons and clickable areas to reduce the chances of accidental taps, making navigation easier and more reliable.
+- **Breadcrumb Navigation**: Shows users where they are in multi-step processes, reducing confusion and helping them keep track of their progress.
+- **Readability Enhancements**: Fonts, text spacing, and line height optimized for readability based on user age and visual needs, ensuring a comfortable reading experience.
+
+### **User Flow:**
+
+1. **Enter Age**: Prompted during setup or through settings.
+2. **Confirmation Prompt**: "You have activated age-specific helpers. Would you like to preview the changes before proceeding?" (Preview/Confirm/Cancel)
+3. **Toggle On/Off**: Easily switch helpers on or off as needed.
+
+---
+
+### **2. Color Customization Options**
+
+For users with different visual needs, we included customizable themes that enhance readability.
+
+### **Available Themes:**
+
+1. **Dark Mode**:
+    - Reduces eye strain in low-light environments.
+    - Background: Dark gray or black. Text: Light gray or white.
+2. **High-Contrast Mode**:
+    - Improves readability with strong contrast.
+    - Background: Black or white. Text: Yellow, white, or black.
+3. **Color Blindness-Friendly Mode**:
+    - Designed for users with color blindness (protanopia, deuteranopia, tritanopia).
+    - Uses distinguishable color palettes that don’t rely solely on color differences.
+
+### **Implementation Details:**
+
+- **Theme Toggle**: Easy switch between themes in settings.
+- **Preview Option**: See how the theme looks before applying it.
+- **Confirmation Prompt**: "You are about to apply a new color theme. Would you like to proceed?" (Preview/Confirm/Cancel)
+- **Readability Enhancements**: Ensures font choice, spacing, and contrast meet accessibility standards like **WCAG 2.1 AA**.
+
+### **User Flow:**
+
+1. **Access Settings**.
+2. **Select Theme**.
+3. **Preview Changes**.
+4. **Confirmation Prompt**.
+5. **Apply Theme**.
+
+---
+
+## **Conclusion**
+
+The **Adaptive Interface Wrapper** fills a major gap in mobile app accessibility. By offering features like age-based helpers, color customization, simplified financial terminology, and user feedback mechanisms, this solution makes mobile banking more inclusive and user-friendly. Plus, it’s easy to integrate, ensuring a smoother digital experience for everyone.
+
+---
+
+**"Inclusive design isn’t a luxury; it’s a necessity for a fair digital world."**
