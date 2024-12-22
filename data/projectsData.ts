@@ -7,20 +7,16 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'WCAG Color Guideliness',
+    description: `The Color Contrast Checker is a tool built to ensure web accessibility by evaluating the contrast between two colors. It calculates the contrast ratio, checks compliance with WCAG standards for text and UI elements, and offers a "Fix Contrast" option to suggest accessible alternatives, making inclusive design straightforward.`,
+    imgSrc: '/static/images/wcag169.jpg',
+    href: 'https://codepen.io/andy0911/full/PoMvwyb',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Comparative Study of Machine Learning Models on Devanāgari Scripts',
+    description: `A Comparative Study of ML Models analyzing Support Vector Machines (SVM) and Convolutional Neural Networks (CNN) for Devanagari script recognition, focusing on accuracy, training time, and performance. The project highlights CNN's superior accuracy (98.66%) and faster training, with plans to expand the dataset and explore advanced deep learning techniques.`,
+    imgSrc: '/static/images/mlmodels169.jpg',
+    href: 'https://colab.research.google.com/drive/1JikKcbT9AuZDqJfETIJLLgdJ6XyZYpE9?usp=sharing',
   },
 ]
 
