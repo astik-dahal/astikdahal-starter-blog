@@ -1,15 +1,18 @@
 ---
 title: Adaptive Interface Wrapper for Inclusive Mobile Banking UX
-images : ['https://images.pexels.com/photos/19099383/pexels-photo-19099383/free-photo-of-christmas-tree-in-the-prague-old-town-czech-republic.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load']
+images:
+  [
+    'https://images.pexels.com/photos/19099383/pexels-photo-19099383/free-photo-of-christmas-tree-in-the-prague-old-town-czech-republic.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+  ]
 date: '2024-12-20'
-tags: ['ux', 'case study', 'accessibility']
+tags: ['case study', 'accessibility']
 draft: false
 summary: Adaptive Interface Wrapper improves mobile banking accessibility with age-specific helpers and customizable themes for an inclusive experience.
 ---
+
 {/* (https://www.texthelp.com/resources/inclusive-digital-banking/) */}
 
 # Introduction
-
 
 In today’s world, where almost everyone relies on mobile apps for essential services like banking, **accessibility** is something that can’t be ignored. But let’s be real: most mobile banking apps don’t offer the same accessibility features as desktop tools. As a UX designer who’s passionate about HCI and usability, I realized this gap affects a lot of people, especially older adults or those with vision impairments.
 
@@ -24,19 +27,19 @@ This case study dives into the development of an **Adaptive Interface Wrapper** 
 To back this project with solid data, I carried out a thorough research process involving both **quantitative surveys** and **qualitative interviews**.
 
 1. **Online Survey**: Collected responses from **200 mobile banking users** aged 40-70. The key findings were:
-    - **68%** reported struggling with small text or low-contrast interfaces.
-    - **54%** felt anxious about making mistakes while performing transactions.
-    - **72%** of respondents aged 60+ preferred clearer instructions and larger buttons.
+   - **68%** reported struggling with small text or low-contrast interfaces.
+   - **54%** felt anxious about making mistakes while performing transactions.
+   - **72%** of respondents aged 60+ preferred clearer instructions and larger buttons.
 2. **User Interviews**: Conducted **15 in-depth interviews** with participants aged 45-70, including individuals with varying degrees of vision impairment (e.g., presbyopia, color blindness). Some insights:
-    - **Ramesh, 65**: "Sometimes I can’t read the text because it’s so small, and I worry I’ll click the wrong button."
-    - **Anita, 58**: "I wish there were clearer steps when I’m transferring money. I get confused with too many options."
+   - **Ramesh, 65**: "Sometimes I can’t read the text because it’s so small, and I worry I’ll click the wrong button."
+   - **Anita, 58**: "I wish there were clearer steps when I’m transferring money. I get confused with too many options."
 3. **Competitor Analysis**: Compared accessibility features of popular desktop tools. Here’s a summary:
 
-| **Tool** | **Features** | **Device** |
-| --- | --- | --- |
-| **ReachDeck Toolbar** | Text-to-speech, translation, and reading assistance. | Desktop |
-| **ADA Toolbar** | Accessibility checker, screen reader support, and text resizing. | Desktop |
-| **Recite Me** | Customizable toolbar with reading aids, color contrast adjustments, and translation capabilities. | Desktop |
+| **Tool**              | **Features**                                                                                      | **Device** |
+| --------------------- | ------------------------------------------------------------------------------------------------- | ---------- |
+| **ReachDeck Toolbar** | Text-to-speech, translation, and reading assistance.                                              | Desktop    |
+| **ADA Toolbar**       | Accessibility checker, screen reader support, and text resizing.                                  | Desktop    |
+| **Recite Me**         | Customizable toolbar with reading aids, color contrast adjustments, and translation capabilities. | Desktop    |
 
 Noticed that while these tools are great for desktop apps, there’s a **lack of similar solutions for mobile apps**.
 
@@ -77,14 +80,14 @@ For users with different visual needs, we included customizable themes that enha
 ### **Available Themes:**
 
 1. **Dark Mode**:
-    - Reduces eye strain in low-light environments.
-    - Background: Dark gray or black. Text: Light gray or white.
+   - Reduces eye strain in low-light environments.
+   - Background: Dark gray or black. Text: Light gray or white.
 2. **High-Contrast Mode**:
-    - Improves readability with strong contrast.
-    - Background: Black or white. Text: Yellow, white, or black.
+   - Improves readability with strong contrast.
+   - Background: Black or white. Text: Yellow, white, or black.
 3. **Color Blindness-Friendly Mode**:
-    - Designed for users with color blindness (protanopia, deuteranopia, tritanopia).
-    - Uses distinguishable color palettes that don’t rely solely on color differences.
+   - Designed for users with color blindness (protanopia, deuteranopia, tritanopia).
+   - Uses distinguishable color palettes that don’t rely solely on color differences.
 
 ### **Implementation Details:**
 

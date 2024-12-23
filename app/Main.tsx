@@ -1,5 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import Hero from '@/components/Hero'
 import Image from '@/components/Image'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
@@ -11,82 +12,75 @@ export default function Home({ posts }) {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-
-        <div className="flex flex-col-reverse md:flex-row items-center space-y-4 md:space-y-2 md:space-x-6 pb-8 pt-6">
-          <Image
-            src={'/static/images/avatar.jpg'}
-            alt="avatar"
-            width={100}
-            height={100}
-            className="h-48 w-48 rounded-full object-fit"
-          />
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 pb-5">
-            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-              Hi! I'm Astik Dahal.
+        <Hero />
+        <div className="space-y-2 pb-4 pt-0 md:space-y-5">
+          <div className="pt-4">
+            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
+              Latest
             </h1>
-            <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 ">
+            <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
               {siteMetadata.description}
             </p>
+          </div>          
+          <div className="grid grid-cols-1 gap-6 pb-4 pt-4 md:grid-cols-2 lg:grid-cols-3">
+            {posts.slice(0, MAX_DISPLAY).map((post) => {
+              const { slug, date, title, summary, tags, images } = post // Assuming `imageUrl` contains the image URL
+              const headerImg = images[0] || 'https://placehold.co/320x180?text=No+Image+Found'
+              console.log(images)
+              return (
+                <div
+                  key={slug}
+                  className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800 hover:drop-shadow-lg"
+                >
+                  {/* Single Link Component Wrapping Entire Card */}
+                  <Link href={`/blog/${slug}`} className="block group">
+                    {/* Image with 16:9 ratio */}
+                    <div className="relative w-full bg-gray-200 pt-[56.25%] dark:bg-gray-700">
+                      <img
+                        src={headerImg}
+                        alt={title}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    </div>
+                    {/* Content */}
+                    <div className="p-6">
+                      <dl>
+                        <dt className="sr-only">Published on</dt>
+                        <dd className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400">
+                          <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                        </dd>
+                      </dl>
+                      <div className="mt-4">
+                        <h2 className="text-lg font-bold leading-6 tracking-tight text-gray-900 group-hover:underline dark:text-gray-100">
+                          {title}
+                        </h2>
+                        {/* Replace Nested Link with Span */}
+                        <div className="mt-2 flex flex-wrap">
+                          {tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="mr-3 text-xs font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="prose mt-4 max-w-none text-gray-500 dark:text-gray-400">
+                        {summary}
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+
+
+
+              )
+            })}
           </div>
         </div>
 
-        <div className="pt-10 pb-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags, images } = post; // Assuming `imageUrl` contains the image URL
-            const headerImg = images[0] || 'https://placehold.co/320x180?text=No+Image+Found'
-            console.log(images)
-            return (
-              <div key={slug} className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-                <article>
-                  {/* Image with 16:9 ratio */}
-                  <div className="relative w-full pt-[56.25%] bg-gray-200 dark:bg-gray-700">
-                    <img
-                      src={headerImg}
-                      alt={title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Content */}
-                  <div className="p-6">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                      </dd>
-                    </dl>
-                    <div className="mt-4">
-                      <h2 className="text-lg font-bold leading-6 tracking-tight">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-gray-900 dark:text-gray-100 hover:underline"
-                        >
-                          {title}
-                        </Link>
-                      </h2>
-                      <div className="flex flex-wrap mt-2">
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
-                    </div>
-                    <div className="mt-4 text-sm font-medium">
-                      <Link
-                        href={`/blog/${slug}`}
-                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                        aria-label={`Read more: "${title}"`}
-                      >
-                        Read more &rarr;
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            );
-          })}
-        </div>
+
 
         {/* <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}

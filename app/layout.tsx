@@ -3,6 +3,7 @@ import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
 import { Space_Grotesk } from 'next/font/google'
+import { Figtree } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -16,6 +17,11 @@ const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
+})
+const fig_tree = Figtree({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fig-tree',
 })
 
 export const metadata: Metadata = {
@@ -64,7 +70,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      // className={`${space_grotesk.variable} scroll-smooth`}
+      className={`${fig_tree.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link
