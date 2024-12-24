@@ -21,7 +21,7 @@ export default function Home({ posts }) {
             <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
               {siteMetadata.description}
             </p>
-          </div>          
+          </div>
           <div className="grid grid-cols-1 gap-6 pb-4 pt-4 md:grid-cols-2 lg:grid-cols-3">
             {posts.slice(0, MAX_DISPLAY).map((post) => {
               const { slug, date, title, summary, tags, images } = post // Assuming `imageUrl` contains the image URL
@@ -30,10 +30,10 @@ export default function Home({ posts }) {
               return (
                 <div
                   key={slug}
-                  className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800 hover:drop-shadow-lg"
+                  className="overflow-hidden rounded-lg bg-white shadow hover:drop-shadow-lg dark:bg-gray-800"
                 >
                   {/* Single Link Component Wrapping Entire Card */}
-                  <Link href={`/blog/${slug}`} className="block group">
+                  <Link href={`/blog/${slug}`} className="group block">
                     {/* Image with 16:9 ratio */}
                     <div className="relative w-full bg-gray-200 pt-[56.25%] dark:bg-gray-700">
                       <img
@@ -72,15 +72,10 @@ export default function Home({ posts }) {
                     </div>
                   </Link>
                 </div>
-
-
-
               )
             })}
           </div>
         </div>
-
-
 
         {/* <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}

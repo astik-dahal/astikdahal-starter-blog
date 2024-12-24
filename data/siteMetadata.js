@@ -3,8 +3,7 @@ const siteMetadata = {
   title: 'Astik Dahal',
   author: 'Astik Dahal',
   headerTitle: 'Astik Dahal',
-  description:
-    'Read some of my works on product design',
+  description: 'Read some of my works on product design',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',

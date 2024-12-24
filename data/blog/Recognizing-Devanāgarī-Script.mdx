@@ -1,14 +1,12 @@
 ---
 title: Recognizing Devanāgarī Script
-images:
-  [
-    '/static/images/mlmodels169.jpg',
-  ]
+images: ['/static/images/mlmodels169.jpg']
 date: '2024-11-20'
 tags: ['case study', 'accessibility']
 draft: false
 summary: Comparing CNN and SVM for recognizing handwritten Devanāgarī script, using a dataset of 92,000 images. CNN achieved 98.66% accuracy, excelling in feature extraction, while SVM was faster but less precise (95.24%).
 ---
+
 # Recognizing Devanāgarī Script: A Deep Dive into CNN vs. SVM
 
 ## Summary
@@ -122,11 +120,11 @@ The SVM reached a respectable **95.24% accuracy**, proving to be a faster yet sl
 
 Here’s a comparison of the two models:
 
-| Metric | CNN | SVM |
-| --- | --- | --- |
-| **Test Accuracy** | 98.66% | 95.24% |
-| **Training Time** | ~254 secs | ~154 secs |
-| **Inference Time** | ~4.2 ms | ~2.8 ms |
+| Metric             | CNN       | SVM       |
+| ------------------ | --------- | --------- |
+| **Test Accuracy**  | 98.66%    | 95.24%    |
+| **Training Time**  | ~254 secs | ~154 secs |
+| **Inference Time** | ~4.2 ms   | ~2.8 ms   |
 
 ### Key Takeaways:
 
