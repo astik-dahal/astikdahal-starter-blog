@@ -1,0 +1,144 @@
+---
+title: Recognizing Devanāgarī Script
+images:
+  [
+    '/static/images/mlmodels169.jpg',
+  ]
+date: '2024-11-20'
+tags: ['case study', 'accessibility']
+draft: false
+summary: Comparing CNN and SVM for recognizing handwritten Devanāgarī script, using a dataset of 92,000 images. CNN achieved 98.66% accuracy, excelling in feature extraction, while SVM was faster but less precise (95.24%).
+---
+# Recognizing Devanāgarī Script: A Deep Dive into CNN vs. SVM
+
+## Summary
+
+Handwritten text recognition is one of the cornerstones of modern machine learning, especially in optical character recognition (OCR) systems. Devanāgarī script, used in languages like Hindi, Marathi, and Nepali, presents unique challenges due to its complex characters and varying handwriting styles. Our recent research explores two popular machine learning approaches—Convolutional Neural Networks (CNN) and Support Vector Machines (SVM)—to tackle this problem.
+
+## Why Devanāgarī Script Recognition Matters
+
+Digitizing handwritten Devanāgarī text is crucial for building inclusive technology that bridges the accessibility gap for millions of users. From document transcription to automated translation, OCR systems for this script enable tasks that go far beyond the capabilities of manual methods.
+
+## The Dataset: A Peek into the Data
+
+We worked with a Kaggle dataset containing **92,000 grayscale images**, each representing one of **46 characters**. Each image is **32x32 pixels**, and the characters include consonants and digits, but vowels are notably absent, making the task more challenging.
+
+Here’s a snippet showing how the dataset was loaded and preprocessed:
+
+```python
+python
+Copy code
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.utils import to_categorical
+
+# Load the data
+data = pd.read_csv("devanagari_character_set.csv")
+X = data.iloc[:, :-1].values.reshape(-1, 32, 32, 1)  # Reshape for CNN
+y = to_categorical(data['character'])  # One-hot encode labels
+
+# Split into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+## The Models: CNN vs. SVM
+
+We evaluated two models:
+
+1. **Convolutional Neural Networks (CNN):** Known for their ability to extract complex image features.
+
+![cnn.png](cnn.png)
+
+1. **Support Vector Machines (SVM):** A traditional machine learning approach, efficient but often limited in handling intricate patterns.
+
+![svm.png](svm.png)
+
+### CNN: High Accuracy at a Computational Cost
+
+Our CNN architecture consisted of **5 convolutional layers**, interspersed with pooling layers and dropout for regularization.
+
+![modelloss.png](modelloss.png)
+
+Here’s the core of the model architecture:
+
+```python
+python
+Copy code
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+
+# Build the CNN model
+cnn_model = Sequential([
+    Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 1)),
+    MaxPooling2D(pool_size=(2, 2)),
+    Dropout(0.25),
+    Conv2D(64, (3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Dropout(0.25),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dropout(0.5),
+    Dense(46, activation='softmax')  # Output layer for 46 classes
+])
+
+cnn_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+print("CNN model compiled!")
+
+```
+
+After training the CNN on the dataset, it achieved an impressive **98.66% accuracy** on the test set.
+
+### SVM: A Lightweight Alternative
+
+To contrast, our SVM utilized **Principal Component Analysis (PCA)** for dimensionality reduction, reducing the feature space to 100 components for computational efficiency:
+
+```python
+python
+Copy code
+from sklearn.decomposition import PCA
+from sklearn.svm import SVC
+from sklearn.pipeline import make_pipeline
+from sklearn.metrics import accuracy_score
+
+# SVM pipeline with PCA
+pca = PCA(n_components=100)
+svm = SVC(kernel='rbf')
+
+svm_model = make_pipeline(pca, svm)
+
+# Train and evaluate the model
+svm_model.fit(X_train.reshape(X_train.shape[0], -1), np.argmax(y_train, axis=1))
+svm_predictions = svm_model.predict(X_test.reshape(X_test.shape[0], -1))
+
+svm_accuracy = accuracy_score(np.argmax(y_test, axis=1), svm_predictions)
+print(f"SVM Accuracy: {svm_accuracy:.4f}")
+
+```
+
+The SVM reached a respectable **95.24% accuracy**, proving to be a faster yet slightly less precise option.
+
+## Results and Insights
+
+Here’s a comparison of the two models:
+
+| Metric | CNN | SVM |
+| --- | --- | --- |
+| **Test Accuracy** | 98.66% | 95.24% |
+| **Training Time** | ~254 secs | ~154 secs |
+| **Inference Time** | ~4.2 ms | ~2.8 ms |
+
+### Key Takeaways:
+
+- **CNN excels** in accuracy and robustness, making it ideal for complex OCR tasks.
+- **SVM is computationally efficient**, suitable for resource-constrained scenarios.
+
+## Future Directions
+
+Our next steps involve deploying these models in **live Automatic Number Plate Recognition (ANPR) systems** to evaluate their performance under real-world conditions. Additionally, we plan to explore **Transformer-based architectures**, which promise improved scalability and accuracy for multilingual OCR tasks.
+
+## Final Thoughts
+
+This study demonstrates that while CNNs lead in accuracy for Devanāgarī script recognition, SVMs remain a practical choice in scenarios where computational resources are limited. By advancing OCR technologies for scripts like Devanāgarī, we can make significant strides toward bridging the digital divide for underrepresented languages.
+
+Ready to explore the code? Check out the full notebook [here](https://colab.research.google.com/drive/1JikKcbT9AuZDqJfETIJLLgdJ6XyZYpE9#scrollTo=UcE414Khj3o5).
