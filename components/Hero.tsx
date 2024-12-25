@@ -11,7 +11,8 @@ export default function Hero() {
                 Hi, I&#x27;m Astik 👋
               </h1>
               <p className="my-6 w-full text-left text-xl dark:text-white md:w-3/4 md:text-3xl">
-                I'm a computer science enthusiast, doing machine learning, natural language processing and creating human centered designs.
+                I'm a computer science enthusiast, doing machine learning, natural language
+                processing and creating human centered designs.
               </p>
               <div className="mb-12 mt-8">
                 <Link
